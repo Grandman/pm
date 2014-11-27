@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+  before_action :get_project
   # GET /tasks
   # GET /tasks.json
   def index
@@ -71,4 +71,8 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:name)
     end
+
+    def get_project
+      @project = Project.find(params[:project_id])
+    end 
 end
