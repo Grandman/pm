@@ -1,3 +1,3 @@
 class Project < ActiveRecord::Base
- has_many :task
+ has_many :tasks, dependent: :destroy
 end

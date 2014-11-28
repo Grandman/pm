@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Project:</strong>
   <%= @project.name %>
 </p>
-
+<table class="table">
+<% @tasks.each do |task| %>
+<tr><td><%= link_to task.name, [@project, task]%></td></tr>
+<% end %>
+</table>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
