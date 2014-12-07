@@ -26,12 +26,10 @@ ActiveRecord::Schema.define(version: 20141206120139) do
     t.datetime "updated_at"
   end
 
-  create_table "tasks_users", force: true do |t|
+  create_table "tasks_users", id: false, force: true do |t|
     t.integer "task_id"
     t.integer "user_id"
   end
-
-  add_index "tasks_users", ["task_id", "user_id"], name: "index_tasks_users_on_task_id_and_user_id"
 
   create_table "users", force: true do |t|
     t.string   "login"

@@ -1,9 +1,8 @@
 class CreateTasksUsers < ActiveRecord::Migration
   def change
-    create_table :tasks_users do |t|
-      t.integer :task_id
-      t.integer :user_id
+    create_table :tasks_users, id: false do |t|
+      t.belongs_to :task
+      t.belongs_to :user
     end
- add_index :tasks_users, [:task_id, :user_id]
   end
 end

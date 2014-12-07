@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :set_user]
   before_action :get_project
   # GET /tasks
   # GET /tasks.json
@@ -10,11 +10,13 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @users = @task.users
   end
 
   # GET /tasks/new
   def new
     @task = Task.new
+    @users = User.all
   end
 
   # GET /tasks/1/edit
@@ -24,9 +26,8 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
-
     @task = @project.tasks.build(task_params)
+    @task.users << User.find(params["user"])
     respond_to do |format|
       if @task.save
         format.html { redirect_to project_path(@project), notice: 'Task was successfully created.' }
@@ -64,9 +65,7 @@ class TasksController < ApplicationController
   end
   
   def set_user
-    @task = User.tasks.build(task_params)
-    @task.users << User.last
-    format.html { redirect_to project_path(@project), notice: 'Task was successfully created.' }
+    
   end
   private
     # Use callbacks to share common setup or constraints between actions.
