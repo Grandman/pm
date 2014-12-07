@@ -17,9 +17,7 @@
   </div>
   <div class="field">
     <%= f.label "Select User" %>
-    <select name="user">
-    <%= options_for_select(@users.collect { |u| [u.login, u.id]} ) %><br>
-    </select> 
+    <%= f.select(:users, @users.collect { |u| [u.login, u.id]} , {:promt => "Please select"} , { :multiple => true, :size => 5 }) %><br>
   <div class="actions">
     <%= f.submit %>
   </div>

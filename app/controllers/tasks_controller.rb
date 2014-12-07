@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :set_user]
   before_action :get_project
   before_action :get_users, only: [:edit, :new]
+  after_action :set_users, only: [:create, :update]
   # GET /tasks
   # GET /tasks.json
   def index
@@ -27,7 +28,6 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = @project.tasks.build(task_params)
-    @task.users << User.find(params["user"])
     respond_to do |format|
       if @task.save
         format.html { redirect_to project_path(@project), notice: 'Task was successfully created.' }
@@ -43,7 +43,6 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1.json
   def update
     @task = @project.tasks.build(task_params)
-    @task.users << User.find(params["user"])
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to [@project, @task], notice: 'Task was successfully updated.' }
@@ -84,5 +83,10 @@ class TasksController < ApplicationController
     end 
     def get_users 
       @users = User.all
+    end
+    def set_users
+      params[:task][:users].each do |user|
+        @task.users << User.find(user) unless user.empty?
+      end   
     end
 end
