@@ -8,9 +8,14 @@
 <% @tasks.each do |task| %>
 <tr>
     <td><%= link_to task.name, [@project, task]%></td>
-    <td>Users: <% task.users.each do |user| %> 
-         <%= user.login %>
-        <% end %>
+    <td>Users: 
+   <% if task.users.empty? %>
+      "Not Users"
+   <% else %>   
+       <% task.users.each do |user|  %>
+       <%= user.login %>
+        <% end %> 
+   <% end %>
     </td></tr>
 <% end %>
 </table>

@@ -2,17 +2,18 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :set_user]
   before_action :get_project
   before_action :get_users, only: [:edit, :new]
-  after_action :set_users, only: [:create, :update]
+  #after_action :set_users, only: [:create, :update]
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.without_parent 
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
     @users = @task.users
+    @subtasks = @task.children
   end
 
   # GET /tasks/new
@@ -28,6 +29,10 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = @project.tasks.build(task_params)
+    @task.parent = Task.find(params[:parent]) unless params[:parent].nil? 
+    params[:task][:users].each do |user|
+      @task.users << User.find(user) unless user.empty?
+    end   
     respond_to do |format|
       if @task.save
         format.html { redirect_to project_path(@project), notice: 'Task was successfully created.' }
@@ -42,7 +47,10 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    @task = @project.tasks.build(task_params)
+      @task.users = []
+      params[:task][:users].each do |user|
+        @task.users << User.find(user) unless user.empty?
+      end   
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to [@project, @task], notice: 'Task was successfully updated.' }
@@ -59,7 +67,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to project_path(@project), notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
