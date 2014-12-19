@@ -4,21 +4,9 @@
   <strong>Project:</strong>
   <%= @project.name %>
 </p>
-<table class="table">
-<% @tasks.each do |task| %>
-<tr>
-    <td><%= link_to task.name, [@project, task]%></td>
-    <td>Users: 
-   <% if task.users.empty? %>
-      "Not Users"
-   <% else %>   
-       <% task.users.each do |user|  %>
-       <%= user.login %>
-        <% end %> 
-   <% end %>
-    </td></tr>
-<% end %>
-</table>
+  <%= render @tasks%>
+<div class="subtasks">
+</div>
 <%= link_to "Add Task", new_project_task_path(@project) %>
 <br>
 <%= link_to 'Edit', edit_project_path(@project) %> |

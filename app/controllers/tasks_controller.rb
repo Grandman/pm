@@ -14,6 +14,10 @@ class TasksController < ApplicationController
   def show
     @users = @task.users
     @subtasks = @task.children
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end 
   end
 
   # GET /tasks/new

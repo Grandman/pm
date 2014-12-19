@@ -1,0 +1,11 @@
+<%= div_for task do %>
+ <%= link_to task.name, [@project, task] %>
+ <%= link_to "Show Subtasks", [@project, task], remote: true %>
+<div class="subtasks" style="padding-left: 10px;">
+</div>
+<div class="completed">
+  <% task.completed.each do |task_compl| %>
+    <%= task_compl.name %>
+  <% end %>
+</div>
+<% end %>

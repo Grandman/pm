@@ -6,4 +6,7 @@ class Task < ActiveRecord::Base
  def self.without_parent
    Task.where(parent: nil)
  end
+ def self.completed
+   Task.where(completed: true)
+ end
 end

@@ -2,6 +2,8 @@
   <thead>
     <tr>
       <th>Name of project</th>
+      <th>Created</th>
+      <th>Deadline</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -10,6 +12,8 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= link_to project.name, project %></td>
+        <td><%= project.created_at %></td>
+        <td><%= project.end_at %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

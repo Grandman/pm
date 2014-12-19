@@ -13,7 +13,9 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_area :name %>
+    <%= f.text_area :name %><br>
+     Select deadline:
+    <%= f.datetime_select :end_at %>
   </div>
   <div class="actions">
     <%= f.submit %>
