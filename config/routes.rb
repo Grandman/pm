@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end 
   resources :users
   get "/projects/:project_id/tasks/:id/set_user/" => "tasks#set_user", :as => 'set_user' 
+  get "/projects/:project_id/tasks/:id/complete/" => "tasks#complete", :as => 'complete'
   root to: 'projects#index' 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

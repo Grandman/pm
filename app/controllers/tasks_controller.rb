@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :set_user]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :complete, :set_user]
   before_action :get_project
   before_action :get_users, only: [:edit, :new]
   #after_action :set_users, only: [:create, :update]
@@ -76,6 +76,13 @@ class TasksController < ApplicationController
     end
   end
   
+  def complete
+    @task.completed = true 
+    if @task.save
+     render :text => "success"
+    end
+  end
+
   def set_user
     
   end
@@ -87,7 +94,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name)
+      params.require(:task).permit(:name, :description, :end_at)
     end
 
     def get_project

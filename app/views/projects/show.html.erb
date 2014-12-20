@@ -9,6 +9,16 @@
   <%= @project.description %>
 </p>
   <%= render @tasks%>
+
+<script>
+     $('.complete_check').change(function(){
+        $.get('/projects/<%= @project.id %>/tasks/'+$(this).val()+'/complete/', function(data,status){
+            if(status == 'success'){
+              alert(data)
+             }
+        })
+     })
+   </script>
 <div class="subtasks">
 </div>
 <%= link_to "Add Task", new_project_task_path(@project) %>
