@@ -5,8 +5,20 @@ one:
   name: MyText
   project_id: 1
   completed: nil
+  parent_id: nil
+  created_at: <%= 5.day.ago.to_s(:db) %>
+  end_at: <%= 1.day.ago.to_s(:db) %>
 two:
   id: 2
   name: Text
   project_id: 2
   completed: true
+  parent_id: nil
+  created_at: <%= 1.day.ago.to_s(:db) %>
+  end_at: <%= 2.day.ago.to_s(:db) %>
+three:
+  id: 3
+  name: Text
+  project_id: 2
+  completed: true
+  parent_id: 2
