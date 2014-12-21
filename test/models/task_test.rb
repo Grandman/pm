@@ -3,6 +3,7 @@ require 'test_helper'
 class TaskTest < ActiveSupport::TestCase
    def setup
      @task = Task.new
+     @task.project = projects(:one) 
    end
    test "should not valid without name" do
      assert !@task.valid?
