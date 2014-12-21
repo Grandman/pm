@@ -2,10 +2,10 @@ require 'test_helper'
 
 class TaskTest < ActiveSupport::TestCase
    def setup
-     @task = Task.new
-     @task.project = projects(:one) 
+     @task = tasks(:one)
    end
    test "should not valid without name" do
+     @task.name = nil
      assert !@task.valid?
    end
    test "valid with name length between 3 and 30" do
@@ -19,5 +19,8 @@ class TaskTest < ActiveSupport::TestCase
    test "invalid with name length less then 3" do
      @task.name = "1"
      assert !@task.valid?
+   end
+   test "find not_completed" do
+     assert_equal tasks.not_completed, tasks(:one)
    end
 end

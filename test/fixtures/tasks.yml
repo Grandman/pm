@@ -1,7 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: MyText
-
+  project_id: 1
+  completed: nil
 two:
-  name: MyText
+  id: 2
+  name: Text
+  project_id: 2
+  completed: true
