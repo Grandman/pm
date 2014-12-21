@@ -20,7 +20,4 @@ class TaskTest < ActiveSupport::TestCase
      @task.name = "1"
      assert !@task.valid?
    end
-   test "find not_completed" do
-     assert_equal tasks.not_completed, tasks(:one)
-   end
 end
