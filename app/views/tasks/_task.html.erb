@@ -1,17 +1,9 @@
 <%= div_for task do %>
-<%= check_box_tag( "task_#{task.name.gsub(" ", "")}", task.id, false, class: "complete_check") %>
-
+<% if task.completed.nil? %>
+    <%= check_box_tag( "task_#{task.name.gsub(" ", "")}", task.id, false, class: "complete_check") %>
+<% end %>
  <%= link_to task.name, [@project, task] %>
  <%= link_to "Show Subtasks", [@project, task], remote: true %>
 <div class="subtasks" style="padding-left: 10px;">
-</div>
-<div class="completed">
-<% if task.find_completed(@project).nil? %>
-<% else %>
- Completed:
-  <% task.find_completed(@project).each do |task_compl| %>
-    <%= task_compl.name %>
-  <% end %>
-<% end %>
 </div>
 <% end %>

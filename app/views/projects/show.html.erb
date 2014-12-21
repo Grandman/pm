@@ -8,13 +8,20 @@
   <strong>Description:</strong><br>
   <%= @project.description %>
 </p>
-  <%= render @tasks%>
+  <%= render @tasks.not_completed%>
 
+<div class="completed">
+<% if Task.find_completed(@project).nil? %>
+<% else %>
+ Completed:
+<%= render Task.find_completed(@project) %>
+<% end %>
+</div>
 <script>
      $('.complete_check').change(function(){
         $.get('/projects/<%= @project.id %>/tasks/'+$(this).val()+'/complete/', function(data,status){
             if(status == 'success'){
-              alert(data)
+              data
              }
         })
      })

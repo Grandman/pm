@@ -78,8 +78,12 @@ class TasksController < ApplicationController
   
   def complete
     @task.completed = true 
-    if @task.save
-     render :text => "success"
+    respond_to do |format|  
+        if @task.save
+          format.js
+        else
+          render :text => "Not success"
+        end
     end
   end
 

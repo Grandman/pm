@@ -1,0 +1,2 @@
+$('#<%= dom_id(@task) %>').hide();
+$('.completed').append("<%= escape_javascript(render @task) %>");
