@@ -1,0 +1,96 @@
+{
+  "MiniTest": {
+    "coverage": {
+      "/home/grandman/rails_projects/pm/app/models/user.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/grandman/rails_projects/pm/app/models/project.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/grandman/rails_projects/pm/app/models/task.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        null,
+        1,
+        0,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/home/grandman/rails_projects/pm/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/grandman/rails_projects/pm/app/helpers/projects_helper.rb": [
+        1,
+        null
+      ],
+      "/home/grandman/rails_projects/pm/app/helpers/tasks_helper.rb": [
+        1,
+        null
+      ],
+      "/home/grandman/rails_projects/pm/test/helpers/tasks_helper_test.rb": [
+        1,
+        null,
+        1,
+        null
+      ],
+      "/home/grandman/rails_projects/pm/test/models/project_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/grandman/rails_projects/pm/test/models/task_test.rb": [
+        1,
+        null,
+        1,
+        1,
+        0,
+        null,
+        1,
+        0,
+        null,
+        1,
+        0,
+        0,
+        null,
+        1,
+        0,
+        0,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/home/grandman/rails_projects/pm/test/models/user_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1419172726
+  }
+}

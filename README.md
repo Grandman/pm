@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/Grandman/pm.svg?branch=master)](https://travis-ci.org/Grandman/pm) [![Coverage Status](https://img.shields.io/coveralls/Grandman/pm.svg)](https://coveralls.io/r/Grandman/pm)
