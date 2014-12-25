@@ -84,6 +84,7 @@ class TasksController < ApplicationController
   
   def complete
     @task.completed = true 
+    @task.children.each{|children| children.update_attribute(:completed, true)}
     respond_to do |format|  
         if @task.save
           format.js
@@ -104,7 +105,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :description, :end_at)
+      params.require(:task).permit(:name, :description,:start_at, :end_at)
     end
 
     def get_project

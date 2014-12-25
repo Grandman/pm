@@ -28,6 +28,61 @@
    </script>
 <div class="subtasks">
 </div>
+<div class="gantt">
+</div>
+    <script src="http://taitems.github.com/UX-Lab/core/js/prettify.js"></script>
+  <script>
+  $(function() {
+            "use strict";
+            $(".gantt").gantt({
+source: [
+<% @project.tasks.without_parent.each do |task| %>
+   {
+                    name: "<%= task.name %>",
+                    desc: "",
+                    values: [{
+                        from: "/<%= task.start_at %>/",
+                        to: "/<%= task.end_at %>/",
+                        label: "<%= task.name %>",
+                        customClass: "gantt<%= task.completed ? "Green" : "Red" %>"
+                    
+                    }]
+                
+                   },
+   <% task.children.each do |children| %>
+   {
+                    name: "",
+                    desc: "<%= children.name %>",
+                    values: [{
+                        from: "/<%= children.start_at %>/",
+                        to: "/<%= children.end_at %>/",
+                        label: "<%= children.name %>",
+                        customClass: "gantt<%= children.completed ? "Green" : "Red" %>"
+                    
+                    }]
+                
+                   },
+
+    <% end %> 
+<% end %>                
+                    ],
+                navigate: "scroll",
+                maxScale: "hours",
+                itemsPerPage: 10,
+          
+onRender: function() {
+              if (window.console && typeof console.log === "function") {
+                        console.log("chart rendered");
+                    
+              }
+                
+          }
+            
+                });
+            prettyPrint();
+        
+          });
+  </script>
 <%= link_to "Add Task", new_project_task_path(@project) %>
 <br>
 <%= link_to 'Edit', edit_project_path(@project) %> |

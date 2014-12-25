@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.fn.gantt
 //= require bootstrap.min
 //= require turbolinks
 //= require_tree .
