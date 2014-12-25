@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {registrations: 'registrations'}
   resources :projects do 
     resources :tasks 
   end 
-  resources :users
+  resources :user, :controller => "user"
   get "/projects/:project_id/tasks/:id/set_user/" => "tasks#set_user", :as => 'set_user' 
   get "/projects/:project_id/tasks/:id/complete/" => "tasks#complete", :as => 'complete'
   root to: 'projects#index' 

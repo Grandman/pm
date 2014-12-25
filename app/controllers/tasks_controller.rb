@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :complete, :set_user]
   before_action :get_project
-  before_action :get_users, only: [:edit, :new]
+  before_action :get_users, only: [:edit, :new, :create, :update]
   #after_action :set_users, only: [:create, :update]
   # GET /tasks
   # GET /tasks.json
@@ -33,10 +33,8 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = @project.tasks.build(task_params)
+    @task.users = []
     @task.parent = Task.find(params[:parent]) unless params[:parent].nil? 
-    params[:task][:users].each do |user|
-      @task.users << User.find(user) unless user.empty?
-    end   
     respond_to do |format|
       if @task.save
         format.html { redirect_to project_path(@project), notice: 'Task was successfully created.' }
@@ -45,6 +43,10 @@ class TasksController < ApplicationController
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
+    params[:task][:users].delete("")
+    params[:task][:users].each do |user|
+      @task.users << User.where(id: user)
+    end
     end
   end
 
@@ -52,9 +54,13 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1.json
   def update
       @task.users = []
-      params[:task][:users].each do |user|
-        @task.users << User.find(user) unless user.empty?
-      end   
+     # params[:task][:users].each do |user|
+      #  @task.users << User.find(user) unless user.empty?
+      #end   
+    params[:task][:users].delete("")
+    params[:task][:users].each do |user|
+      @task.users << User.where(id: user)
+    end
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to [@project, @task], notice: 'Task was successfully updated.' }
