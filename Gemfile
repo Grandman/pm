@@ -36,6 +36,7 @@ gem 'simplecov', :require => false, :group => :test
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'rails_12factor', group: :production
 # Use unicorn as the app server
 # gem 'unicorn'
 
