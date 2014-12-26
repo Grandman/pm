@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .gantt, .gantt2 {
-    width: 100%;
+    width: 800px;
     margin: 20px auto;
     border: 14px solid #ddd;
     position: relative;
@@ -105,7 +105,7 @@
 .fn-gantt .dataPanel {
     margin-left: 0px;
     border-right: 1px solid #DDD;
-    background-image: url(../img/grid.png);
+    background-image: url(grid.png);
     background-repeat: repeat;
     background-position: 24px 24px;
     position: relative;
@@ -292,7 +292,7 @@
 .fn-gantt .navigate .nav-slider-button {
     width: 17px;
     height: 60px;
-    background: url(../img/slider_handle.png) center center no-repeat;
+    background: url(slider_handle.png) center center no-repeat;
     left: 0px;
     top: 0px;
     margin: -26px 0 0 0;
@@ -323,7 +323,7 @@
     width: 20px;
     height: 20px;
     font-size: 0px;
-    background: #595959 url(../img/icon_sprite.png) !important;
+    background: #595959 url(icon_sprite.png) !important;
     border: 1px solid #454546;
     cursor: pointer;
     vertical-align: top;
