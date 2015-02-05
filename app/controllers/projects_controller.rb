@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @tasks = @project.tasks.without_parent
+    @tasks = @project.tasks.roots
   end
 
   # GET /projects/new

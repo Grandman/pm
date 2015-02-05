@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141225225043) do
+ActiveRecord::Schema.define(version: 20150205103255) do
 
   create_table "projects", force: true do |t|
     t.text     "name"
@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(version: 20141225225043) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "parent_id"
     t.boolean  "completed"
     t.text     "description"
     t.datetime "end_at"
     t.datetime "start_at"
+    t.string   "ancestry"
   end
 
-  add_index "tasks", ["parent_id"], name: "index_tasks_on_parent_id"
+  add_index "tasks", ["ancestry"], name: "index_tasks_on_ancestry"
 
   create_table "tasks_users", id: false, force: true do |t|
     t.integer "task_id"

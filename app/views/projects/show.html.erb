@@ -36,7 +36,7 @@
             "use strict";
             $(".gantt").gantt({
 source: [
-<% @project.tasks.without_parent.each do |task| %>
+<% @project.tasks.roots.each do |task| %>
    {
                     name: "<%= task.name %>",
                     desc: "",

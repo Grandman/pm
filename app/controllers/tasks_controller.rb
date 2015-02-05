@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.without_parent 
+    @tasks = Task.roots 
   end
 
   # GET /tasks/1

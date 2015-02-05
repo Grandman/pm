@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'autoprefixer-rails'
 gem 'devise'
+gem 'ancestry'
 
 gem 'coveralls', require: false
 group :test do 
