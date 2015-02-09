@@ -4,10 +4,10 @@
   <strong>Name:</strong>
   <%= @task.name %>
 </p>
-<% unless @subtasks.nil? %>
+<% if @task.has_children? %>
   <p>Subtasks</p>
-  <% @subtasks.each do |subtask| %>
-    <p><%= link_to subtask.name, [@project, subtask] %></p>
+  <% @task.descendants.each do |subtask| %>
+    <p style="padding-left:<%= subtask.depth*10%>px;"><%= link_to subtask.name, [@project, subtask] %></p>
   <% end %>
 <% end %> 
 <% if @task.users %>
@@ -16,9 +16,7 @@
 <%= user.email %> <br>
 <% end %>
 <% end %>
-<% if @task.parent.nil? %>
-  <%= link_to 'Add subtask', new_project_task_path(@project,parent: @task) %> |
-<% end %>
+<%= link_to 'Add subtask', new_project_task_path(@project,parent: @task) %> |
 <%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
 <%= link_to 'Destroy',  project_task_path(@project, @task), method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', [@project]%>

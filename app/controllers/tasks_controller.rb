@@ -84,7 +84,7 @@ class TasksController < ApplicationController
   
   def complete
     @task.completed = true 
-    @task.children.each{|children| children.update_attribute(:completed, true)}
+    @task.descendants.each{|descendants| descendants.update_attribute(:completed, true)}
     respond_to do |format|  
         if @task.save
           format.js
