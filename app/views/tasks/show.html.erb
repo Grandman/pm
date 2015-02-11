@@ -6,9 +6,7 @@
 </p>
 <% if @task.has_children? %>
   <p>Subtasks</p>
-  <% @task.descendants.each do |subtask| %>
-    <p style="padding-left:<%= subtask.depth*10%>px;"><%= link_to subtask.name, [@project, subtask] %></p>
-  <% end %>
+  <%= print_subtasks(@task) %>
 <% end %> 
 <% if @task.users %>
 <p> Users: </p>
