@@ -4,9 +4,9 @@
   <strong>Name:</strong>
   <%= @task.name %>
 </p>
-<% if @task.has_children? %>
+<% if @descendants.present? %>
   <p>Subtasks</p>
-  <%= print_subtasks(@task) %>
+  <%= print_tasks(@descendants) %>
 <% end %> 
 <% if @task.users %>
 <p> Users: </p>

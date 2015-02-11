@@ -1,13 +1,13 @@
 module TasksHelper
-  def print_subtasks (task)
-    result = ""
-    task.children.each do |subtask|
-      result << "<ul><li>#{link_to subtask.name, [@project, subtask]}"
-      if subtask.has_children?
-        result << print_subtasks(subtask)
+  def print_tasks (tasks)
+    content_tag(:ul ) do
+      tasks.each do |task|
+        tag = content_tag(:li) do 
+          concat link_to task['name'], project_task_path(@project, task['id'])
+          concat print_tasks(task['children']) unless task['children'].length.zero?
+        end
+        concat tag
       end
-      result << "</li></ul>"
     end
-    raw(result)
   end
 end

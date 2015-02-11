@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   # GET /tasks/1.json
   def show
     @users = @task.users
-    @subtasks = @task.children
+    @descendants = @task.descendants.arrange_serializable
     respond_to do |format|
       format.html {}
       format.js {}
